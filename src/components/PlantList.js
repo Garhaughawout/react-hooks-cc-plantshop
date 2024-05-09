@@ -13,11 +13,13 @@ function PlantList() {
     .then(data => setPlants(data))
     }, [])
 
-    console.log(plants)
-    
+
+
     const renderPlants = plants.map(plant => {
         return <PlantCard key={plant.id} {...plant} />
     })
+
+    
   
     return (
     <ul className="cards">{renderPlants}</ul>

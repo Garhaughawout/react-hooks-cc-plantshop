@@ -14,6 +14,12 @@ function Search() {
     }
     console.log(plant)
 
+    const filteredPlants = plant.map(plant => {
+        return <PlantCard key={plant.id} {...plant} />
+    })
+
+    
+
     return (
     <div className="searchbar">
       <label htmlFor="search">Search Plants:</label>
