@@ -4,17 +4,16 @@ import PlantCard from "./PlantCard";
 
 function Search() {
     const [search, setSearch] = useState("")
-
-    useEffect(() => {
-        console.log(search)
-    })
+    const [plant, setPlant] = useState([])
+    
 
     function searchPlants() {
         fetch(`http://localhost:6001/plants?name=${search}`)
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => setPlant(data))
     }
-  
+    console.log(plant)
+
     return (
     <div className="searchbar">
       <label htmlFor="search">Search Plants:</label>

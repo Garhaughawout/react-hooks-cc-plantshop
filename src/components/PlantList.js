@@ -7,22 +7,20 @@ function PlantList() {
   const [plants, setPlants] = useState([])
   
 
-  fetchPlants()
-  function fetchPlants() {
+    useEffect(() => {
     fetch("http://localhost:6001/plants")
     .then(resp => resp.json())
-    .then(data => renderPlants(data))
-  }
+    .then(data => setPlants(data))
+    }, [])
 
-  function renderPlants(arr) {
-    const plantList = arr.map(plant => {
-      return <PlantCard key={plant.id} name={plant.name} image={plant.image} price={plant.price}/>
+    console.log(plants)
+    
+    const renderPlants = plants.map(plant => {
+        return <PlantCard key={plant.id} {...plant} />
     })
-    setPlants(plantList)
-  }
   
     return (
-    <ul className="cards">{plants}</ul>
+    <ul className="cards">{renderPlants}</ul>
   );
 }
 
